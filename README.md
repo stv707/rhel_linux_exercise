@@ -6,7 +6,7 @@
 This exercise will help students gain a deep understanding of **soft links (symbolic links)** and **hard links**, including their real-life applications in the Linux filesystem.
 
 ### **Prerequisites**
-- A RHEL system
+- A RHEL system  ( servera or serverb )
 - A spare disk available at `/dev/vdb`
 - Root or sudo access
 
