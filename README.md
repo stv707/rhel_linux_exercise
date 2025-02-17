@@ -105,24 +105,26 @@ Unlike a hard link, the soft link is broken because it only pointed to `testfile
 ---
 
 ### **Part 4: Real-Life Use Cases of Links**
-#### **Use Case 1: Version Control with Hard Links**
-Hard links are useful for version control. Suppose you maintain configuration files:
+#### **Use Case 1: Hard Links for Efficient Storage**
+Hard links are useful for efficient storage management. Suppose you need multiple references to the same log file without duplicating storage:
 
 ```bash
-ln /etc/hosts /mnt/testdisk/hosts_backup
-cat /mnt/testdisk/hosts_backup
+ln /var/log/messages /mnt/testdisk/system_log
+ls -li /var/log/messages /mnt/testdisk/system_log
 ```
 
-Even if the original `/etc/hosts` is modified, the backup remains accessible because it shares the same inode.
+Since both files share the same inode, they remain identical without consuming extra disk space.
 
-#### **Use Case 2: Soft Links for Shared Libraries**
-Soft links are commonly used in shared libraries. Check how libraries use them in `/lib64`:
+#### **Use Case 2: Soft Links for Easy Access**
+Soft links are commonly used to provide quick access to files. For example, creating a shortcut to a frequently used script:
 
 ```bash
-ls -l /lib64/libc.so.6
+ln -s /usr/local/bin/myscript.sh /mnt/testdisk/myscript
+ls -l /mnt/testdisk/myscript
 ```
 
-You’ll see that `libc.so.6` is a symbolic link pointing to a specific version of the library.
+Now, users can execute the script easily without remembering the full path.
+
 
 ---
 
