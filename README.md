@@ -1,5 +1,3 @@
-# rhel_linux_exercise
-
 # Soft Links and Hard Links in Linux (RHEL)
 
 ## Exercise: Understanding Soft and Hard Links in Linux
@@ -13,13 +11,15 @@ This exercise will help students gain a deep understanding of **soft links (symb
 - Root or sudo access
 
 ### **Part 1: Setup and Understanding the Basics**
-#### **Step 1: Create a New Filesystem on /dev/vdb**
-Before we begin working with links, let’s format the spare disk and mount it:
+#### **Step 1: Create a Partition and Filesystem on /dev/vdb**
+Before we begin working with links, let’s create a partition, format it, and mount it:
 
 ```bash
-sudo mkfs.xfs /dev/vdb
+sudo parted /dev/vdb mklabel gpt
+sudo parted /dev/vdb mkpart primary xfs 0% 100%
+sudo mkfs.xfs /dev/vdb1
 sudo mkdir /mnt/testdisk
-sudo mount /dev/vdb /mnt/testdisk
+sudo mount /dev/vdb1 /mnt/testdisk
 ```
 
 #### **Step 2: Create a Sample File**
